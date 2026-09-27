@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Art Festival | เทศกาลศิลปะโรงเรียน</title>
+<style>
+:root{--p:#f472b6;--p2:#db2777;--a:#a78bfa;--b:#67e8f9;--bg:#fffaf7;--t:#3a2232;--m:#8a7080;--y:#fde68a}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Segoe UI","Sarabun",sans-serif;background:var(--bg);color:var(--t);line-height:1.7}
+.container{max-width:1100px;margin:0 auto;padding:0 20px}
+.navbar{position:sticky;top:0;z-index:99;background:rgba(255,250,247,.92);backdrop-filter:blur(10px);border-bottom:2px solid rgba(244,114,182,.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+.logo{font-weight:900;color:var(--p2);text-decoration:none;font-size:1.15rem}
+.nav-links{display:flex;gap:4px;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--t);font-weight:700;font-size:.92rem;padding:8px 12px;border-radius:8px}
+.nav-links a:hover{background:rgba(244,114,182,.15);color:var(--p2)}
+.nav-cta{background:linear-gradient(90deg,#f472b6,#a78bfa)!important;color:#fff!important;padding:8px 18px!important;box-shadow:0 4px 14px rgba(244,114,182,.5)}
+.hamburger{display:none;background:none;border:none;font-size:1.6rem;color:var(--p2);cursor:pointer}
+.hero{background:radial-gradient(circle at 20% 30%,rgba(244,114,182,.35),transparent 50%),radial-gradient(circle at 80% 60%,rgba(167,139,250,.35),transparent 50%),radial-gradient(circle at 50% 90%,rgba(103,232,249,.3),transparent 50%),#fffaf7;padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.hero-inner{position:relative;z-index:2}
+.tag{display:inline-block;background:rgba(244,114,182,.18);border:1px dashed var(--p);color:var(--p2);padding:6px 18px;border-radius:999px;font-size:.82rem;font-weight:800;letter-spacing:2px;margin-bottom:16px}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);font-weight:900;line-height:1.15;margin-bottom:14px}
+.hero h1 span{background:linear-gradient(90deg,#f472b6,#a78bfa,#67e8f9);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:600px;margin:0 auto 28px;color:var(--m)}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;text-decoration:none;font-weight:800;padding:14px 30px;border-radius:999px;transition:.25s}
+.btn-p{background:linear-gradient(90deg,#f472b6,#a78bfa);color:#fff;box-shadow:0 10px 24px rgba(244,114,182,.4)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 15px 30px rgba(244,114,182,.55)}
+.btn-g{color:var(--p2);border:2px solid var(--p)}
+.btn-g:hover{background:rgba(244,114,182,.15)}
+.chips{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:38px;position:relative;z-index:2}
+.chip{background:#fff;border:2px solid rgba(244,114,182,.3);border-radius:14px;padding:10px 20px;font-size:.88rem;font-weight:800;color:var(--p2);box-shadow:0 4px 12px rgba(244,114,182,.1)}
+section{padding:66px 0}
+.head{text-align:center;margin-bottom:44px}
+.head .eyebrow{display:inline-block;color:var(--p2);background:rgba(244,114,182,.14);padding:5px 16px;border-radius:999px;font-size:.78rem;font-weight:900;letter-spacing:1.5px;margin-bottom:12px}
+.head h2{font-size:clamp(1.5rem,4vw,2.2rem);color:var(--p2);font-weight:900;margin-bottom:8px}
+.head p{color:var(--m);max-width:580px;margin:0 auto;font-size:.96rem}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border-radius:20px;padding:28px 24px;box-shadow:0 10px 26px rgba(244,114,182,.1);transition:.3s;border:2px solid transparent}
+.card:nth-child(1){border-color:rgba(244,114,182,.3)}
+.card:nth-child(2){border-color:rgba(167,139,250,.3)}
+.card:nth-child(3){border-color:rgba(103,232,249,.4)}
+.card:hover{transform:translateY(-6px) rotate(-1deg);box-shadow:0 20px 40px rgba(244,114,182,.2)}
+.card .ic{font-size:2.3rem;margin-bottom:12px}
+.card h3{color:var(--p2);margin-bottom:8px;font-size:1.08rem}
+.card p{color:var(--m);font-size:.92rem}
+.sched{background:#fff;border-radius:20px;box-shadow:0 10px 26px rgba(244,114,182,.1);overflow:hidden;border:2px solid rgba(244,114,182,.2)}
+.srow{display:grid;grid-template-columns:150px 1fr;gap:20px;padding:18px 26px;border-bottom:1px dashed rgba(244,114,182,.25);align-items:center}
+.srow:last-child{border:none}
+.srow:hover{background:rgba(253,230,138,.2)}
+.stime{background:linear-gradient(90deg,#f472b6,#a78bfa);color:#fff;font-weight:900;padding:6px 12px;border-radius:10px;text-align:center;font-size:.85rem}
+.stitle{color:var(--p2);font-weight:800}
+.sdesc{color:var(--m);font-size:.86rem}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gi{aspect-ratio:4/3;border-radius:20px;display:grid;place-items:center;font-size:2.4rem;color:#fff;box-shadow:0 10px 24px rgba(244,114,182,.2);transition:.3s;cursor:pointer;position:relative;overflow:hidden}
+.gi::after{content:attr(data-l);position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(58,34,50,.8));padding:22px 14px 10px;font-size:.82rem;font-weight:800;text-align:left}
+.gi:hover{transform:scale(1.04) rotate(1deg)}
+.g1{background:linear-gradient(135deg,#f472b6,#a78bfa)}
+.g2{background:linear-gradient(135deg,#a78bfa,#67e8f9)}
+.g3{background:linear-gradient(135deg,#f472b6,#fde68a)}
+.g4{background:linear-gradient(135deg,#67e8f9,#a78bfa)}
+.g5{background:linear-gradient(135deg,#fde68a,#f472b6)}
+.g6{background:linear-gradient(135deg,#db2777,#a78bfa)}
+.cta{background:linear-gradient(135deg,rgba(244,114,182,.2),rgba(167,139,250,.2),rgba(103,232,249,.2));border-radius:24px;padding:52px 30px;text-align:center;border:2px dashed rgba(244,114,182,.4)}
+.cta h2{font-size:clamp(1.4rem,3.6vw,2rem);color:var(--p2);margin-bottom:12px}
+.cta p{color:var(--m);max-width:520px;margin:0 auto 26px}
+.contacts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cc{background:#fff;border-radius:18px;padding:24px 18px;text-align:center;box-shadow:0 8px 20px rgba(244,114,182,.1);border:2px solid transparent;transition:.25s}
+.cc:nth-child(1){border-color:rgba(244,114,182,.3)}
+.cc:nth-child(2){border-color:rgba(167,139,250,.3)}
+.cc:nth-child(3){border-color:rgba(103,232,249,.4)}
+.cc:nth-child(4){border-color:rgba(253,230,138,.6)}
+.cc:hover{transform:translateY(-5px)}
+.cc .ic{font-size:1.6rem;margin-bottom:8px}
+.cc h4{color:var(--m);font-size:.78rem;letter-spacing:1px;margin-bottom:6px;text-transform:uppercase}
+.cc p{color:var(--p2);font-weight:800;font-size:.92rem}
+footer{background:linear-gradient(90deg,rgba(244,114,182,.15),rgba(167,139,250,.15),rgba(103,232,249,.15));padding:36px 0 24px;text-align:center;border-top:2px dashed rgba(244,114,182,.3);margin-top:20px}
+footer .fl{font-weight:900;color:var(--p2);font-size:1.15rem;margin-bottom:8px}
+footer .fnav{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin:14px 0;list-style:none}
+footer .fnav a{color:var(--m);text-decoration:none;font-weight:600;font-size:.9rem}
+footer .fnav a:hover{color:var(--p2)}
+footer .cp{border-top:1px dashed rgba(244,114,182,.3);padding-top:14px;font-size:.8rem;color:var(--m);margin-top:14px}
+@media(max-width:900px){.cards,.contacts{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.hamburger{display:block}.nav-links{position:absolute;top:66px;left:0;right:0;background:#fffaf7;flex-direction:column;align-items:stretch;padding:10px 14px 16px;box-shadow:0 12px 24px rgba(244,114,182,.15);display:none}.nav-links.open{display:flex}.cards{grid-template-columns:1fr}.gal{grid-template-columns:1fr 1fr}.srow{grid-template-columns:1fr;gap:6px;padding:16px 20px}}
+@media(max-width:420px){.gal,.contacts{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="navbar"><div class="container nav-inner">
+<a href="#top" class="logo">🎨 Art Festival</a>
+<button class="hamburger" id="hb">☰</button>
+<ul class="nav-links" id="nl">
+<li><a href="#about">รายละเอียด</a></li>
+<li><a href="#act">กิจกรรม</a></li>
+<li><a href="#sch">กำหนดการ</a></li>
+<li><a href="#gal">Gallery</a></li>
+<li><a href="#ct">ติดต่อ</a></li>
+<li><a href="#reg" class="nav-cta">สมัคร</a></li>
+</ul>
+</div></nav>
+
+<header class="hero" id="top"><div class="container hero-inner">
+<span class="tag">✿ 5–7 ก.ย. 2568 ✿</span>
+<h1>Art <span>Festival</span></h1>
+<p>เทศกาลศิลปะสร้างสรรค์ของโรงเรียน พื้นที่ให้ทุกคนได้ปล่อยจินตนาการอย่างอิสระ</p>
+<div class="btns">
+<a href="#reg" class="btn btn-p">สมัครเข้าร่วม</a>
+<a href="#act" class="btn btn-g">ดูกิจกรรม</a>
+</div>
+</div>
+<div class="container chips">
+<div class="chip">📅 5–7 ก.ย. 2568</div>
+<div class="chip">⏰ 09.00 – 18.00 น.</div>
+<div class="chip">📍 อาคารศิลปะ</div>
+</div></header>
+
+<section id="about"><div class="container">
+<div class="head"><span class="eyebrow">ABOUT</span><h2>รายละเอียดงาน</h2><p>เทศกาลสำหรับคนรักศิลปะทุกแขนง</p></div>
+<div class="cards">
+<div class="card"><div class="ic">🖌️</div><h3>นิทรรศการภาพวาด</h3><p>ผลงานของนักเรียนทุกระดับชั้น จัดแสดงทั้ง 3 วัน</p></div>
+<div class="card"><div class="ic">📸</div><h3>โซนถ่ายรูป</h3><p>แบ็คดรอปศิลปะน่ารัก ๆ ให้ถ่ายรูปเล่น</p></div>
+<div class="card"><div class="ic">🎭</div><h3>การแสดงสด</h3><p>โชว์การแสดงศิลปะบนเวทีทุกเย็น</p></div>
+</div></div></section>
+
+<section id="act" style="background:rgba(253,230,138,.2)"><div class="container">
+<div class="head"><span class="eyebrow">HIGHLIGHT</span><h2>กิจกรรมเด่น</h2></div>
+<div class="cards">
+<div class="card"><div class="ic">🎨</div><h3>Live Painting</h3><p>ศิลปินรุ่นพี่วาดภาพสด ๆ ให้ชมกันแบบตัวต่อตัว</p></div>
+<div class="card"><div class="ic">✂️</div><h3>Craft Corner</h3><p>เวิร์กช็อปงานฝีมือ ทำของที่ระลึกกลับบ้าน</p></div>
+<div class="card"><div class="ic">📷</div><h3>Photo Contest</h3><p>การประกวดภาพถ่ายหัวข้อ "โรงเรียนในฝัน"</p></div>
+</div></div></section>
+
+<section id="sch"><div class="container">
+<div class="head"><span class="eyebrow">SCHEDULE</span><h2>กำหนดการ</h2><p>5–7 กันยายน 2568</p></div>
+<div class="sched">
+<div class="srow"><div class="stime">09.00 – 10.00</div><div><div class="stitle">เปิดประตู & ลงทะเบียน</div><div class="sdesc">รับสมุดกิจกรรมและเข็มกลัด</div></div></div>
+<div class="srow"><div class="stime">10.00 – 12.00</div><div><div class="stitle">เปิดนิทรรศการ</div><div class="sdesc">เดินชมผลงานทุกบูธ</div></div></div>
+<div class="srow"><div class="stime">12.00 – 13.00</div><div><div class="stitle">พักเที่ยง</div><div class="sdesc">คาเฟ่เครื่องดื่มและเบเกอรี</div></div></div>
+<div class="srow"><div class="stime">13.00 – 15.00</div><div><div class="stitle">เวิร์กช็อป</div><div class="sdesc">วาดภาพ ปั้นดิน งานฝีมือ</div></div></div>
+<div class="srow"><div class="stime">15.00 – 17.00</div><div><div class="stitle">Live Painting</div><div class="sdesc">โชว์วาดสดกลางเวที</div></div></div>
+<div class="srow"><div class="stime">17.00 – 18.00</div><div><div class="stitle">การแสดงปิดงาน</div><div class="sdesc">โชว์การแสดงศิลปะทุกแขนง</div></div></div>
+</div></div></section>
+
+<section id="gal"><div class="container">
+<div class="head"><span class="eyebrow">GALLERY</span><h2>บรรยากาศ</h2></div>
+<div class="gal">
+<div class="gi g1" data-l="นิทรรศการ">🖼️</div>
+<div class="gi g2" data-l="Live Painting">🎨</div>
+<div class="gi g3" data-l="งานฝีมือ">✂️</div>
+<div class="gi g4" data-l="โซนถ่ายรูป">📸</div>
+<div class="gi g5" data-l="การแสดง">🎭</div>
+<div class="gi g6" data-l="ผู้ชนะ">🏅</div>
+</div></div></section>
+
+<section id="reg"><div class="container"><div class="cta">
+<h2>ปล่อยจินตนาการไปกับ<span>ศิลปะ</span></h2>
+<p>เข้าร่วมฟรีทุกวัน มีเวิร์กช็อปให้เลือกมากมาย</p>
+<a href="#ct" class="btn btn-p">สมัครเข้าร่วม</a>
+</div></div></section>
+
+<section id="ct"><div class="container">
+<div class="head"><span class="eyebrow">CONTACT</span><h2>ติดต่อ</h2></div>
+<div class="contacts">
+<div class="cc"><div class="ic">📞</div><h4>โทร</h4><p>02-123-4567</p></div>
+<div class="cc"><div class="ic">✉️</div><h4>อีเมล</h4><p>art@school.ac.th</p></div>
+<div class="cc"><div class="ic">💚</div><h4>LINE</h4><p>@artfest</p></div>
+<div class="cc"><div class="ic">📘</div><h4>Facebook</h4><p>Art Festival 2025</p></div>
+</div></div></section>
+
+<footer><div class="container">
+<div class="fl">Art Festival 2025</div>
+<ul class="fnav"><li><a href="#about">รายละเอียด</a></li><li><a href="#act">กิจกรรม</a></li><li><a href="#sch">กำหนดการ</a></li><li><a href="#gal">Gallery</a></li><li><a href="#reg">สมัคร</a></li><li><a href="#ct">ติดต่อ</a></li></ul>
+<div class="cp">© 2568 Art Festival · สงวนลิขสิทธิ์</div>
+</div></footer>
+
+<script>
+const hb=document.getElementById('hb'),nl=document.getElementById('nl');
+hb.onclick=()=>nl.classList.toggle('open');
+nl.querySelectorAll('a').forEach(a=>a.onclick=()=>nl.classList.remove('open'));
+</script>
+</body>
+</html>
